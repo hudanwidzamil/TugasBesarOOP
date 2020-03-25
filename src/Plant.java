@@ -5,7 +5,7 @@
 public abstract class Plant {
     //attributes
     private String type;
-    private int position;
+    private Point position;
     private int health;
     private int damage;
     private int price;
@@ -14,7 +14,7 @@ public abstract class Plant {
     public void setType(String type) {
         this.type = type;
     }
-    public void setPosition(int position) {
+    public void setPosition(Point position) {
         this.position = position;
     }
     public void setHealth(int health) {
@@ -29,7 +29,7 @@ public abstract class Plant {
 
     //getter
     public String getType(){return this.type;}
-    public int getPosition(){return this.position;}
+    public Point getPosition(){return this.position;}
     public int getHealth(){return this.health;}
     public int getDamage(){return this.damage;}
     public int getPrice(){return this.price;}
