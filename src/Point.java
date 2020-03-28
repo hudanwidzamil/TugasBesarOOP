@@ -4,10 +4,10 @@
 public class Point {
     private int x;
     private int y;
-    
+
     public void Point(){
-        x = 0;
-        y = 0;
+        x = 1;
+        y = 1;
     }
     public void Point(int x, int y){
         this.x = x;
