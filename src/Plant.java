@@ -4,21 +4,23 @@
  */
 public abstract class Plant extends Entitas {
     //attributes
-    protected int health;
+    protected int life;
     protected int price;
 
     //setter
-    public void setHealth(int health) {
-        this.health = health;
+    public void setLife(int life) {
+        this.life = life;
     }
     public void setPrice(int price) {
         this.price = price;
     }
 
     //getter
-    public int getHealth(){return this.health;}
+    public int getLife(){return this.life;}
     public int getPrice(){return this.price;}
     
-    public abstract void shoot();
+    public void shoot(){
+        //TODO
+    }
     
 }

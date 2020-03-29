@@ -5,13 +5,12 @@
 public class Peashooter extends Plant {
 
     public Peashooter(Point P){
-        this.loc = P;
-        this.health = 100;
+        this.pos = P;
+        this.die = false;
+        this.life = 100;
         this.price = 10; //not fixed yet
     }
 
-    public void shoot(){
-        //TODO
-    };
+   
     
 }

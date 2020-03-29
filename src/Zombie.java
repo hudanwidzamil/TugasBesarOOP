@@ -2,21 +2,13 @@
  * Zombie abstract class
  * @author Muhamad Hudan Widzamil (18218003)
  */
-public abstract class Zombie {
+public abstract class Zombie extends Entitas {
     //attributes
-    private String type;
-    private Point position;
-    private int speed;
-    private int health;
-    private int damage;
+    protected int speed;
+    protected int health;
+    protected int damage;
 
     //setter
-    public void setType(String type) {
-        this.type = type;
-    }
-    public void setPosition(Point position) {
-        this.position = position;
-    }
     public void setSpeed(int speed){
         this.speed = speed;
     }
@@ -28,11 +20,10 @@ public abstract class Zombie {
     }
 
     //getter
-    public String getType(){return this.type;}
-    public Point getPosition(){return this.position;}
     public int getSpeed(){return this.speed;}
     public int getHealth(){return this.health;}
     public int getDamage(){return this.damage;}
 
     public abstract void move();
+    public abstract void attack();
 }
