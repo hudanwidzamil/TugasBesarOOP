@@ -4,6 +4,7 @@
 public class NormalZombie extends Zombie {
     public NormalZombie(){
         //this.pos = P; random pos
+        this.icon = 'Z';
         this.die = false;
         this.health = 100;
         this.speed = 10; //not fixed yet
