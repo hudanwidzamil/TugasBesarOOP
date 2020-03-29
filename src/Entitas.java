@@ -4,9 +4,13 @@
 public abstract class Entitas {
     protected Point pos;
     protected boolean die;
+    protected char icon;
 
     public Point getPos(){
         return this.pos;
+    }
+    public char getIcon(){
+        return this.icon;
     }
     public void setPos(Point P){
         this.pos = P;

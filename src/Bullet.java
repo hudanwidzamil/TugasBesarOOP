@@ -5,6 +5,10 @@ public class Bullet extends Entitas {
     private int damage;
     private int speed;
 
+    public Bullet(){
+        
+        this.icon = '-';
+    }
     public int getDamage(){return this.damage;}
     public int getSpeed(){return this.speed;}
     
