@@ -1,5 +1,5 @@
 /**
- * Peashooter
+ * Peashooter (Plant 1)
  * @author Muhamad Hudan Widzamil (18218003)
  */
 public class Peashooter extends Plant {

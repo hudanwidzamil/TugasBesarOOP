@@ -25,5 +25,5 @@ public abstract class Zombie extends Entitas {
     public int getDamage(){return this.damage;}
 
     public abstract void move();
-    public abstract void attack();
+    public abstract void attack(Plant p);
 }

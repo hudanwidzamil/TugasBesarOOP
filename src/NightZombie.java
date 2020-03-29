@@ -1,5 +1,5 @@
 /**
- * NightZombie
+ * NightZombie (Zombie 2)
  */
 public class NightZombie extends Zombie {
     public NightZombie(){
@@ -11,9 +11,11 @@ public class NightZombie extends Zombie {
     }
 
     public void move(){
+        this.pos.translate(-1,0);
         //TODO
     }
-    public void attack(){
+    public void attack(Plant p){
+        p.life-=this.damage;
         //TODO
     }
 }

@@ -6,10 +6,14 @@ import java.util.Arrays;
 
 public class Player {
     private int sunflower;
-    //private entah lapangan;
+    private ArrayList<Entitas> container;
     private int turn;
 
-    //public Player(){};
+    public Player(){
+        this.sunflower = 0;
+        this.turn = 0;
+        this.container = new ArrayList<Entitas>();
+    };
 
     public void setSunflower(int newSunflower){
         this.sunflower = newSunflower;

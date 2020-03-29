@@ -12,6 +12,7 @@ public class Bullet extends Entitas {
     public void setSpeed(int newSpeed){this.speed = newSpeed;}
 
     public void move(){
+        this.pos.translate(1,0);
         //TODO
     }
     public void attack(){
