@@ -2,8 +2,8 @@
  * NormalZombie (Zombie 1)
  */
 public class NormalZombie extends Zombie {
-    public NormalZombie(){
-        //this.pos = P; random pos
+    public NormalZombie(Point pos){
+        this.pos = pos; //random pos
         this.icon = 'Z';
         this.die = false;
         this.health = 100;
