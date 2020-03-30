@@ -17,7 +17,7 @@ public class Player {
         this.sunflower = 0;
         this.turn = 0;
         this.container = new ArrayList<Entitas>();
-        this.map = new char[4][7];
+        this.map = new char[4][9];
     }
 
     public void setSunflower(int newSunflower){
@@ -34,7 +34,7 @@ public class Player {
     public void spawnZombie(){
         int type = rand.nextInt(1);
         int y = rand.nextInt(3);
-        Point pos = new Point(6, y);
+        Point pos = new Point(8, y);
         if (type==0) {         
             //spawn Normal Zombie
             Zombie z = new NormalZombie(pos);
@@ -66,19 +66,19 @@ public class Player {
         }
     }
     public void showMap(){
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0; j < 9; j++) {
             System.out.print(map[0][j] + " ");
         }
         System.out.println(" ");
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0; j < 9; j++) {
             System.out.print(map[1][j] + " ");
         }
         System.out.println(" ");
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0; j < 9; j++) {
             System.out.print(map[2][j] + " ");
         }
         System.out.println(" ");
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0; j < 9; j++) {
             System.out.print(map[3][j] + " ");
         }
     }
