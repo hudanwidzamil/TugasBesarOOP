@@ -46,14 +46,27 @@ public class Player {
         }
     }
     public void buyPlant(int choice, int x, int y){
-        Point pos = new Point(x, y);
         if (choice == 1) {
+            Point pos = new Point(x, y);
             Plant p = new Peashooter(pos);
-            container.add(p);
+            if (this.sunflower >= p.price) {
+                container.add(p);
+                this.sunflower = this.sunflower - p.price;
+            }
+            else {
+                System.out.println("Sorry, can't buy Peashooter");
+            }
         }
         if (choice == 2) {
+            Point pos = new Point(x, y);
             Plant p = new Fumeshroom(pos);
-            container.add(p);
+            if (this.sunflower >= p.price) {
+                container.add(p);
+                this.sunflower = this.sunflower - p.price;
+            }
+            else {
+                System.out.println("Sorry, can't buy Fumeshroom");
+            }
         }
     }
     public void addSunflower(){
@@ -66,20 +79,28 @@ public class Player {
         }
     }
     public void showMap(){
-        for (int j = 0; j < 9; j++) {
-            System.out.print(map[0][j] + " ");
+        System.out.println("Sun = " + this.getSunflower());
+        this.fillMap();
+        System.out.println("**************************************************");
+        for (int j = 0; j < 7; j++) {
+            System.out.print(map[0][j] + "\t");
         }
-        System.out.println(" ");
-        for (int j = 0; j < 9; j++) {
-            System.out.print(map[1][j] + " ");
+        System.out.println("\n");
+        System.out.println("**************************************************");
+        for (int j = 0; j < 7; j++) {
+            System.out.print(map[1][j] + "\t");
         }
-        System.out.println(" ");
-        for (int j = 0; j < 9; j++) {
-            System.out.print(map[2][j] + " ");
+        System.out.println("\n");
+        System.out.println("**************************************************");
+        for (int j = 0; j < 7; j++) {
+            System.out.print(map[2][j] + "\t");
         }
-        System.out.println(" ");
-        for (int j = 0; j < 9; j++) {
-            System.out.print(map[3][j] + " ");
+        System.out.println("\n");
+        System.out.println("**************************************************");
+        for (int j = 0; j < 7; j++) {
+            System.out.print(map[3][j] + "\t");
         }
+        System.out.println("\n");
+        System.out.println("**************************************************");
     }
 }
