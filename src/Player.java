@@ -32,52 +32,74 @@ public class Player {
     }
 
     public void spawnZombie(){
-        int type = rand.nextInt(1);
+        int type = rand.nextInt(10);
         int y = rand.nextInt(3);
         Point pos = new Point(8, y);
-        if (type==0) {         
+        boolean canplace = true;
+        Zombie z;
+
+        if (type % 2 == 0) {         
             //spawn Normal Zombie
-            Zombie z = new NormalZombie(pos);
-            container.add(z);
+            z = new NormalZombie(pos);
         } else {
             //spawn Night Zombie
-            Zombie z = new NightZombie(pos);
+            z = new NightZombie(pos);
+        }
+
+        for (Entitas el : container) {
+            if (el.collideWith(z)) {
+                canplace = false;
+            }
+        }
+
+        if (canplace == true) {
             container.add(z);
         }
     }
+
     public void buyPlant(int choice, int x, int y){
+        boolean canplace = true;
+        Point pos = new Point(x, y);
+        Plant p;
+
         if (choice == 1) {
-            Point pos = new Point(x, y);
-            Plant p = new Peashooter(pos);
-            if (this.sunflower >= p.price) {
-                container.add(p);
-                this.sunflower = this.sunflower - p.price;
-            }
-            else {
-                System.out.println("Sorry, can't buy Peashooter");
+            p = new Peashooter(pos);
+        }
+        else {
+            p = new Fumeshroom(pos);
+        }
+
+        for (Entitas el : container) {
+            if (el.collideWith(p)) {
+                canplace = false;
             }
         }
-        if (choice == 2) {
-            Point pos = new Point(x, y);
-            Plant p = new Fumeshroom(pos);
+
+        if (canplace == false) {
+            System.out.println("Sorry, can't place there");
+        }
+        else {
             if (this.sunflower >= p.price) {
                 container.add(p);
                 this.sunflower = this.sunflower - p.price;
             }
             else {
-                System.out.println("Sorry, can't buy Fumeshroom");
+                System.out.println("Sorry, can't buy plant");
             }
         }
     }
+
     public void addSunflower(){
         int newSunflower = rand.nextInt((15 - 5) + 1) + 5;
         this.setSunflower(this.getSunflower()+newSunflower);
     }
+
     public void fillMap(){
         for (Entitas el : container) {
             map[el.getPos().getY()][el.getPos().getX()] = el.getIcon();
         }
     }
+    
     public void showMap(){
         System.out.println("Sun = " + this.getSunflower());
         this.fillMap();
