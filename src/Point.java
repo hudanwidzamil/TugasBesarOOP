@@ -1,6 +1,8 @@
 /**
  * Point
  */
+import java.lang.Math;
+
 public class Point {
     private int x;
     private int y;
@@ -32,6 +34,14 @@ public class Point {
     public void translate(Point P){
         this.x +=P.getX();
         this.y +=P.getY();
+    }
+
+    public int distance(Point P){
+        if (this.y==P.getY()) {
+          return Math.abs(this.x-P.getX());
+        } else{
+            return -1;
+        }
     }
 
 }
