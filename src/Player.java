@@ -81,26 +81,26 @@ public class Player {
     public void showMap(){
         System.out.println("Sun = " + this.getSunflower());
         this.fillMap();
-        System.out.println("**************************************************");
-        for (int j = 0; j < 7; j++) {
+        System.out.println("******************************************************************");
+        for (int j = 0; j < 9; j++) {
             System.out.print(map[0][j] + "\t");
         }
         System.out.println("\n");
-        System.out.println("**************************************************");
-        for (int j = 0; j < 7; j++) {
+        System.out.println("******************************************************************");
+        for (int j = 0; j < 9; j++) {
             System.out.print(map[1][j] + "\t");
         }
         System.out.println("\n");
-        System.out.println("**************************************************");
-        for (int j = 0; j < 7; j++) {
+        System.out.println("******************************************************************");
+        for (int j = 0; j < 9; j++) {
             System.out.print(map[2][j] + "\t");
         }
         System.out.println("\n");
-        System.out.println("**************************************************");
-        for (int j = 0; j < 7; j++) {
+        System.out.println("******************************************************************");
+        for (int j = 0; j < 9; j++) {
             System.out.print(map[3][j] + "\t");
         }
         System.out.println("\n");
-        System.out.println("**************************************************");
+        System.out.println("******************************************************************");
     }
 }
