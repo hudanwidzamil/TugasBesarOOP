@@ -17,7 +17,7 @@ public class Player {
         this.sunflower = 0;
         this.turn = 0;
         this.container = new ArrayList<Entitas>();
-        this.map = new char[7][4];
+        this.map = new char[4][7];
     };
 
     public void setSunflower(int newSunflower){
@@ -33,16 +33,31 @@ public class Player {
 
     public void spawnZombie(){
         int type = rand.nextInt(1);
+        int y = rand.nextInt(3);
+        Point pos = new Point(6, y);
         if (type==0) {
             //TODO            
             //spawn Normal Zombie
+            Zombie z = new NormalZombie(pos);
+            container.add(z);
         } else {
             //TODO
             //spawn Night Zombie
+            Zombie z = new NightZombie(pos);
+            container.add(z);
         }
     }
-    public void buyPlant(int choice){
+    public void buyPlant(int choice, int x, int y){
         //TODO
+        Point pos = new Point(x, y);
+        if (choice == 1) {
+            Plant p = new Peashooter(x, y);
+            container.add(p);
+        }
+        if (choice == 2) {
+            Plant p = new Peashooter(x, y);
+            container.add(p);
+        }
     }
     public void addSunflower(){
         int newSunflower = rand.nextInt((max - min) + 1) + min;
@@ -50,10 +65,29 @@ public class Player {
     }
     public void fillMap(){
         for (Entitas el : container) {
-            map[el.getPos().getX()][el.getPos().getY()] = el.getIcon();
+            map[el.getPos().getY()][el.getPos().getX()] = el.getIcon();
         }
     }
     public void showMap(){
         //TODO
+        for (int j = 0, j < 7, j++) {
+            System.out.print(map[0][j]);
+            System.out.print(" ");
+        }
+        System.out.println(" ");
+        for (int j = 0, j < 7, j++) {
+            System.out.print(map[1][j]);
+            System.out.print(" ");
+        }
+        System.out.println(" ");
+        for (int j = 0, j < 7, j++) {
+            System.out.print(map[2][j]);
+            System.out.print(" ");
+        }
+        System.out.println(" ");
+        for (int j = 0, j < 7, j++) {
+            System.out.print(map[3][j]);
+            System.out.print(" ");
+        }
     }
 }
