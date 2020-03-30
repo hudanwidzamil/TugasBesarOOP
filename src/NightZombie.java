@@ -7,12 +7,12 @@ public class NightZombie extends Zombie {
         this.icon = 'N';
         this.die = false;
         this.health = 100;
-        this.speed = 20; //not fixed yet
+        this.speed = 2; //not fixed yet
         this.damage = 20; //not fixed yet
     }
 
     public void move(){
-        this.pos.translate(-1,0);
+        this.pos.translate(-this.speed,0);
         //TODO
     }
     public void attack(Plant p){

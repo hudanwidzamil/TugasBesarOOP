@@ -7,11 +7,11 @@ public class NormalZombie extends Zombie {
         this.icon = 'Z';
         this.die = false;
         this.health = 100;
-        this.speed = 10; //not fixed yet
+        this.speed = 1; //not fixed yet
         this.damage = 10; //not fixed yet
     }
     public void move(){
-        this.pos.translate(-1,0);
+        this.pos.translate(-this.speed,0);
         //TODO
     }
     public void attack(Plant p){
