@@ -7,6 +7,11 @@ public abstract class Plant extends Entitas {
     protected int life;
     protected int price;
 
+    //ctor
+    public Plant() {
+        type = "plant";
+    }
+
     //setter
     public void setLife(int life) {
         this.life = life;

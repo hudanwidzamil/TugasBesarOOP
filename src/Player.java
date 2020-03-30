@@ -2,7 +2,6 @@
  * Player class
  */
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Player {
@@ -125,4 +124,11 @@ public class Player {
         System.out.println("\n");
         System.out.println("******************************************************************");
     }
+
+    /*method testing
+    public void printContainer() {
+        for (Entitas el: container) {
+            System.out.println(el.getType());
+        }
+    } */
 }

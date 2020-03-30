@@ -3,6 +3,7 @@
  */
 public class NightZombie extends Zombie {
     public NightZombie(Point pos){
+        super();
         this.pos = pos; //use random
         this.icon = 'N';
         this.die = false;

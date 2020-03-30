@@ -8,6 +8,11 @@ public abstract class Zombie extends Entitas {
     protected int health;
     protected int damage;
 
+    //ctor
+    public Zombie() {
+        type = "zombie";
+    }
+
     //setter
     public void setSpeed(int speed){
         this.speed = speed;

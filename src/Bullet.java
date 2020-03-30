@@ -9,6 +9,7 @@ public class Bullet extends Entitas {
         this.icon = '-';
         this.speed = 1;
         this.damage = damage;
+        this.type = "bullet";
     }
     public int getDamage(){return this.damage;}
     public int getSpeed(){return this.speed;}

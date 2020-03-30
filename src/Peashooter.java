@@ -5,6 +5,7 @@
 public class Peashooter extends Plant {
 
     public Peashooter(Point pos){
+        super();
         this.pos = pos;
         this.icon = 'P';
         this.die = false;
