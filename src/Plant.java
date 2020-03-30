@@ -19,8 +19,9 @@ public abstract class Plant extends Entitas {
     public int getLife(){return this.life;}
     public int getPrice(){return this.price;}
     
-    public void shoot(){
+    /*public void shoot(){
         //TODO
-    }
+
+    }*/
     
 }

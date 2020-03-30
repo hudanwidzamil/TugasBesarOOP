@@ -6,7 +6,6 @@ public class Bullet extends Entitas {
     private int speed;
 
     public Bullet(){
-        
         this.icon = '-';
     }
     public int getDamage(){return this.damage;}
@@ -17,9 +16,8 @@ public class Bullet extends Entitas {
 
     public void move(){
         this.pos.translate(1,0);
-        //TODO
     }
-    public void attack(){
-        //TODO
+    public void attack(Zombie z){
+        z.health = z.health - damage;
     }
 }
