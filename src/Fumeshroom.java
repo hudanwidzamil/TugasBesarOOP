@@ -4,8 +4,8 @@
  * 
  */
 public class Fumeshroom extends Plant{
-    public Fumeshroom(Point P){
-        this.loc = P;
+    public Fumeshroom(Point pos){
+        this.pos = pos;
         this.icon = 'F';
         this.die = false;
         this.life = 100;
