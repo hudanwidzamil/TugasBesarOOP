@@ -1,6 +1,7 @@
 /**
  * Fumeshroom (Plant 2)
  * @author Muhamad Hudan Widzamil (18218003)
+ * @author Carissa Aurelia (18217501)
  * 
  */
 public class Fumeshroom extends Plant{
@@ -10,7 +11,8 @@ public class Fumeshroom extends Plant{
         this.icon = 'F';
         this.die = false;
         this.life = 100;
-        this.price = 20; //not fixed yet
+        this.price = 20;
+        this.damage = 20;
     }
    
     

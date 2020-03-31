@@ -1,11 +1,13 @@
 /**
  * Plant abstract class
  * @author Muhamad Hudan Widzamil (18218003)
+ * @author Carissa Aurelia (18217501)
  */
 public abstract class Plant extends Entitas {
     //attributes
     protected int life;
     protected int price;
+    protected int damage;
 
     //ctor
     public Plant() {
@@ -19,14 +21,17 @@ public abstract class Plant extends Entitas {
     public void setPrice(int price) {
         this.price = price;
     }
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
     //getter
     public int getLife(){return this.life;}
     public int getPrice(){return this.price;}
+    public int getDamage(){return this.damage;}
     
-    /*public void shoot(){
-        //TODO
-
-    }*/
+    public Bullet shoot(){
+        return new Bullet(this.damage);
+    }
     
 }

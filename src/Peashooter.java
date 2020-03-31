@@ -1,6 +1,7 @@
 /**
  * Peashooter (Plant 1)
  * @author Muhamad Hudan Widzamil (18218003)
+ * @author Carissa Aurelia (18217501)
  */
 public class Peashooter extends Plant {
 
@@ -10,7 +11,8 @@ public class Peashooter extends Plant {
         this.icon = 'P';
         this.die = false;
         this.life = 100;
-        this.price = 10; //not fixed yet
+        this.price = 10;
+        this.damage = 10;
     }
 
    

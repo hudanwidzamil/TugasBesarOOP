@@ -1,5 +1,6 @@
 /**
  * Bullet
+ * @author Carissa Aurelia (18217501)
  */
 public class Bullet extends Entitas {
     private int damage;
@@ -18,7 +19,7 @@ public class Bullet extends Entitas {
     public void setSpeed(int newSpeed){this.speed = newSpeed;}
 
     public void move(){
-        this.pos.translate(this.speed,0);
+        this.pos.translate(this.speed, 0);
     }
     public void attack(Zombie z){
         z.health = z.health - damage;
