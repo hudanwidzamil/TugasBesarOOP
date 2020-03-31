@@ -3,12 +3,14 @@
  */
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Iterator; 
 
 public class Player {
     private int sunflower;
     private ArrayList<Entitas> container;
     private int turn;
     private char[][] map;
+    private boolean win = true;
 
     Random rand = new Random();
 
@@ -30,6 +32,9 @@ public class Player {
     }
     public int getTurn(){
         return this.turn;
+    }
+    public boolean getWin(){
+        return win;
     }
 
     public void spawnZombie(){
@@ -141,15 +146,13 @@ public class Player {
         }
     }
 
-    public void skip() {
+    public void skip () {
         //yang harus dilakukan saat skip
         /* list yg belum dibuat:
             zombie yg udh mati dibuang dari layar
-            zombie yg ada didepan plant attack plantnya
             shoot bullet
             bullet yg udh dishoot move
             bullet yg kena zombie ngedamage dan diilangin dari layar
-            plant yg udh mati dibuang dari layar
          */
 
         //tambahin sun
@@ -162,21 +165,55 @@ public class Player {
         }
 
         //zombie yg udh ada suruh jalan (kalo masih bisa jalan)
-        boolean canmovezombie = true;
+        //zombie yg ada didepan plant attack plantnya
         int zombiedist;
         for (Entitas el: container) {
             if (el.getType().equals("zombie")) {
                 Zombie z = (Zombie) el;
+                boolean canmovezombie = true;
                 for (Entitas other: container) {
                     zombiedist = el.getPos().distance(other.getPos());
                     if (zombiedist == z.getSpeed()) {
                         canmovezombie = false;
+                        if (other.getType().equals("plant")) {
+                            Plant pl = (Plant) other;
+                            z.attack(pl);
+                        }
+                    }
+                    if (z.getPos().getX() - z.getSpeed() < 0) {
+                        canmovezombie = false;
+                        win = false;
+                        break;
                     }
                 }
                 if (canmovezombie == true) {
                     z.move();
                 }
             }
+        }
+
+        //entitas yg udh mati dimark mati (baru zombie dan plant)
+        for (Entitas el: container) {
+            if (el.getType().equals("plant")) {
+                Plant pldead = (Plant) el;
+                if (pldead.getLife() < 0) {
+                    pldead.isDead();
+                }
+            }
+            else if (el.getType().equals("zombie")) {
+                Zombie zdead = (Zombie) el;
+                if (zdead.getHealth() < 0) {
+                    zdead.isDead();
+                }
+            }
+        }
+        //entitas yg udh mati dibuang dari layar
+        Iterator itr = container.iterator(); 
+        while (itr.hasNext()) 
+        { 
+            Entitas eldead = (Entitas) itr.next(); 
+            if (eldead.getDie()) 
+                itr.remove(); 
         }
     }
 }
