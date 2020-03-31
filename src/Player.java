@@ -150,13 +150,6 @@ public class Player {
     }
 
     public void skip () {
-        //yang harus dilakukan saat skip
-        /* list yg belum dibuat:
-            zombie yg udh mati dibuang dari layar
-            shoot bullet
-            bullet yg udh dishoot move
-            bullet yg kena zombie ngedamage dan diilangin dari layar
-         */
 
         //tambahin sun
         this.addSunflower();
@@ -166,6 +159,17 @@ public class Player {
         if (spawnornot % 2 == 0) {
             this.spawnZombie();
         }
+
+        //plant yg udah ada shoot bullet
+        ArrayList<Bullet> newbullet = new ArrayList<Bullet>();
+        for (Entitas el: container) {
+            if (el.getType().equals("plant")) {
+                Plant pl = (Plant) el;
+                Bullet bp = pl.shoot();
+                newbullet.add(bp);
+            }
+        }
+        container.addAll(0, newbullet);
 
         //zombie yg udh ada suruh jalan (kalo masih bisa jalan)
         //zombie yg ada didepan plant attack plantnya
@@ -195,7 +199,31 @@ public class Player {
             }
         }
 
-        //entitas yg udh mati dimark mati (baru zombie dan plant)
+        //bullet yg udh dishoot move
+        for (Entitas el: container) {
+            if (el.getType().equals("bullet")) {
+                Bullet b = (Bullet) el;
+                if (el.getPos().getX() + b.getSpeed() > 8) {
+                    //bullet diilangin dari layar (karena udh keluar jangkauan layar)
+                    b.isDead();
+                }
+                else {
+                    b.move();
+                    //bullet ngedamage zombie dan diilangin dari layar
+                    for (Entitas other: container) {
+                        if (other.getType().equals("zombie")) {
+                            Zombie zdmg = (Zombie) other;
+                            if (b.collideWith(zdmg)) {
+                                b.attack(zdmg);
+                                b.isDead();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //zombie & plant yg udh mati dimark mati
         for (Entitas el: container) {
             if (el.getType().equals("plant")) {
                 Plant pldead = (Plant) el;
