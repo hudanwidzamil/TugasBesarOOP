@@ -39,6 +39,12 @@ public class Main {
             else if (command.equals("skip")) {
                 p.skip();
             }
+
+            if (p.getWin() == false) {
+                System.out.println("You lose.");
+                end = true;
+            }
+            
             p.addTurn();
             try
             {
