@@ -18,6 +18,6 @@ public class NightZombie extends Zombie {
     }
     public void attack(Plant p){
         p.life-=this.damage;
-        //TODO
+        System.out.println("A night zombie at "+(pos.getX()+1)+","+(pos.getY()+1)+" has attacked a plant by "+this.damage+" pts");
     }
 }
