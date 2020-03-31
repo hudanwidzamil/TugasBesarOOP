@@ -11,6 +11,7 @@ public class Player {
     private int turn;
     private char[][] map;
     private boolean win = true;
+    public static int score = 0;
 
     Random rand = new Random();
 
@@ -116,6 +117,7 @@ public class Player {
     
     public void showMap(){
         System.out.println("Sun = " + this.getSunflower()+" Turn = "+this.getTurn());
+        System.out.println("Score = " + score);
         this.fillMap();
         System.out.println("******************************************************************");
         for (int j = 0; j < 9; j++) {
