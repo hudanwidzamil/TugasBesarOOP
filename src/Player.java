@@ -94,6 +94,13 @@ public class Player {
     }
 
     public void fillMap(){
+        //clear map
+        for (int i = 0; i < 4; i++){
+            for (int j = 0; j < 9; j++) {
+                map[i][j] = ' ';
+            }
+        }
+
         for (Entitas el : container) {
             map[el.getPos().getY()][el.getPos().getX()] = el.getIcon();
         }
@@ -125,10 +132,49 @@ public class Player {
         System.out.println("******************************************************************");
     }
 
-    /*method testing
+    /*method testing */
     public void printContainer() {
         for (Entitas el: container) {
             System.out.println(el.getType());
         }
-    } */
+    }
+
+    public void skip() {
+        //yang harus dilakukan saat skip
+        /* list yg belum dibuat:
+            zombie yg udh mati dibuang dari layar
+            zombie yg ada didepan plant attack plantnya
+            shoot bullet
+            bullet yg udh dishoot move
+            bullet yg kena zombie ngedamage dan diilangin dari layar
+            plant yg udh mati dibuang dari layar
+         */
+
+        //tambahin sun
+        this.addSunflower();
+        
+        //spawn zombie
+        int spawnornot = rand.nextInt(10);
+        if (spawnornot % 2 == 0) {
+            this.spawnZombie();
+        }
+
+        //zombie yg udh ada suruh jalan (kalo masih bisa jalan)
+        boolean canmovezombie = true;
+        int zombiedist;
+        for (Entitas el: container) {
+            if (el.getType().equals("zombie")) {
+                Zombie z = (Zombie) el;
+                for (Entitas other: container) {
+                    zombiedist = el.getPos().distance(other.getPos());
+                    if (zombiedist == z.getSpeed()) {
+                        canmovezombie = false;
+                    }
+                }
+                if (canmovezombie == true) {
+                    z.move();
+                }
+            }
+        }
+    }
 }
