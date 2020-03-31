@@ -44,7 +44,6 @@ public class Main {
         
         introscreen();
         System.out.println("Welcome to PvZ!");
-        System.out.println("Type 'exit' to quit.");
         //wait 1s
         try{
             Thread.sleep(1000);
