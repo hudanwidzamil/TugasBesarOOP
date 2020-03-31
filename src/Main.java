@@ -1,9 +1,16 @@
+import java.lang.ref.Cleaner;
 import java.util.Scanner;
 
 /**
  * Main
  */
 public class Main {
+    public final static void clearscreen(){
+        for(int clear = 0; clear < 10; clear++)
+        {
+            System.out.println("\b") ;
+        }
+    }
     public static void main(String[] args) {
         boolean end = false;
 
@@ -24,7 +31,8 @@ public class Main {
             }
             else if (command.equals("buy")) {
                 System.out.println("plant type: 1. peashooter, 2. fumeshroom");
-                System.out.println("position: x[1,7], y[1,4]");
+                System.out.println("position: x[1,9], y[1,4]");
+                System.out.println("input: <type> <x pos> <y pos>");
                 p.buyPlant(in.nextInt(), in.nextInt()-1, in.nextInt()-1);
                 
             }
@@ -32,6 +40,15 @@ public class Main {
                 p.skip();
             }
             p.addTurn();
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException ex)
+            {
+                Thread.currentThread().interrupt();
+            }
+            clearscreen();
         }
     }
     
