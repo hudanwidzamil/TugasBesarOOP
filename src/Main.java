@@ -32,8 +32,8 @@ public class Main {
         System.out.println("                           THE END                                ");
         System.out.println();
         System.out.println("                  Thank you for playing this                      ");
-        System.out.println("                      Quarantine Content™                         ");
-        System.out.println("                            ©2020                                 ");
+        System.out.println("                      Quarantine Content                          ");
+        System.out.println("                             2020                                 ");
         
     }
 

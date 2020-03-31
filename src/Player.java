@@ -97,6 +97,7 @@ public class Player {
 
     public void addSunflower(){
         int newSunflower = rand.nextInt((15 - 5) + 1) + 5;
+        System.out.println("Ditambahkan "+newSunflower+" sunflower point");
         this.setSunflower(this.getSunflower()+newSunflower);
     }
 
