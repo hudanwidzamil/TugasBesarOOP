@@ -54,7 +54,6 @@ public class Main {
         clearscreen();
 
         Player p = new Player();
-
         while (! end) {
             p.showMap();
             System.out.println("Command available:");
@@ -76,7 +75,6 @@ public class Main {
                 System.out.println("You lose.");
                 end = true;
             }
-            
             p.addTurn();
             //wait 1s
             try{
