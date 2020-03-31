@@ -22,7 +22,9 @@ public class Player {
     public void setSunflower(int newSunflower){
         this.sunflower = newSunflower;
     }
-
+    public void addTurn(){
+        this.turn++;
+    }
     public int getSunflower(){
         return this.sunflower;
     }
@@ -107,7 +109,7 @@ public class Player {
     }
     
     public void showMap(){
-        System.out.println("Sun = " + this.getSunflower());
+        System.out.println("Sun = " + this.getSunflower()+" Turn = "+this.getTurn());
         this.fillMap();
         System.out.println("******************************************************************");
         for (int j = 0; j < 9; j++) {
