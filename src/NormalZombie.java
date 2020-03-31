@@ -16,6 +16,5 @@ public class NormalZombie extends Zombie {
     }
     public void attack(Plant p){
         p.life-=this.damage;
-        System.out.println("A normal zombie at "+(pos.getX()+1)+","+(pos.getY()+1)+" has attacked a plant by "+this.damage+" pts");
     }
 }
