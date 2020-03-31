@@ -45,14 +45,13 @@ public class Main {
         introscreen();
         System.out.println("Welcome to PvZ!");
         System.out.println("Type 'exit' to quit.");
-        try
-        {
+        //wait 1s
+        try{
             Thread.sleep(1000);
-        }
-        catch(InterruptedException ex)
-        {
+        }catch(InterruptedException ex){
             Thread.currentThread().interrupt();
         }
+        
         clearscreen();
 
         Player p = new Player();
@@ -60,27 +59,18 @@ public class Main {
         while (! end) {
             p.showMap();
             System.out.println("Command available:");
-            System.out.println("buy, skip, exit");
+            System.out.println("BUY, SKIP, EXIT(and other input means exit too)");
             String command = in.next();
-            if (command.equals("exit")) {
-                end = true;
-            }
-            else if (command.equals("buy")) {
+            if (command.equals("BUY")) {
                 System.out.println("plant type: 1. peashooter, 2. fumeshroom");
                 System.out.println("position: x[1,9], y[1,4]");
                 System.out.println("input: <type> <x pos> <y pos>");
                 p.buyPlant(in.nextInt(), in.nextInt()-1, in.nextInt()-1);
-                try
-                {
-                    Thread.sleep(1000);
-                }
-                catch(InterruptedException ex)
-                {
-                    Thread.currentThread().interrupt();
-                }
             }
-            else if (command.equals("skip")) {
+            else if (command.equals("SKIP")) {
                 p.skip();
+            }else{
+                end = true;
             }
 
             if (p.getWin() == false) {
@@ -89,6 +79,13 @@ public class Main {
             }
             
             p.addTurn();
+            //wait 1s
+            try{
+                Thread.sleep(1000);
+            }catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+
             clearscreen();
         }
         outroscreen();
