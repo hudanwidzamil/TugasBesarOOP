@@ -20,6 +20,10 @@ public abstract class Entitas {
     public String getType() {
         return type;
     }
+
+    public boolean getDie() {
+        return die;
+    }
     
     public void isDead(){
         this.die = true;
