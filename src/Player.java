@@ -11,7 +11,6 @@ public class Player {
     private int turn;
     private char[][] map;
     private boolean win = true;
-    public static int score = 0;
 
     Random rand = new Random();
 
@@ -117,7 +116,6 @@ public class Player {
     
     public void showMap(){
         System.out.println("Sun = " + this.getSunflower()+" Turn = "+this.getTurn());
-        System.out.println("Score = " + score);
         this.fillMap();
         System.out.println("******************************************************************");
         for (int j = 0; j < 9; j++) {
@@ -169,30 +167,46 @@ public class Player {
                 newbullet.add(bp);
             }
         }
-        container.addAll(0, newbullet);
+        container.addAll(newbullet);
 
+        for (Entitas ent : container) {
+            System.out.println(ent.getIcon()+" "+ent.getType()+" "+ent.getPos().getX()+","+ent.getPos().getY());
+        }
+        showMap();
+        
         //zombie yg udh ada suruh jalan (kalo masih bisa jalan)
         //zombie yg ada didepan plant attack plantnya
         int zombiedist;
         for (Entitas el: container) {
             if (el.getType().equals("zombie")) {
-                Zombie z = (Zombie) el;
+                Entitas preq = el;
+                Zombie z = (Zombie) preq;
+                // System.out.println("el "+el.getClass());
+                // System.out.println("preq "+preq.getClass());
+                // System.out.println("z "+z.getClass());
                 boolean canmovezombie = true;
                 for (Entitas other: container) {
-                    zombiedist = el.getPos().distance(other.getPos());
-                    if (zombiedist == z.getSpeed()) {
-                        canmovezombie = false;
-                        if (other.getType().equals("plant")) {
+                    // System.out.println("other "+other.getClass());
+                    // System.out.println("other "+other.getType()+" "+other.getIcon());
+                    // System.out.println("other "+other.getPos().getX()+","+other.getPos().getY());
+                    if (other.getType().equals("plant")) {
+                        zombiedist = el.getPos().distance(other.getPos());
+                        if (zombiedist == z.getSpeed()) {
+                            canmovezombie = false;
                             Plant pl = (Plant) other;
                             z.attack(pl);
                         }
                     }
-                    if (z.getPos().getX() - z.getSpeed() < 0) {
+                    else if (other.getType().equals("bullet")) {
+                        canmovezombie = true;
+                    }
+                    else if (z.getPos().getX() - z.getSpeed() < 0) {
                         canmovezombie = false;
                         win = false;
                         break;
                     }
                 }
+
                 if (canmovezombie == true) {
                     z.move();
                 }
@@ -202,7 +216,12 @@ public class Player {
         //bullet yg udh dishoot move
         for (Entitas el: container) {
             if (el.getType().equals("bullet")) {
-                Bullet b = (Bullet) el;
+                Entitas prev = el;
+                Bullet b = (Bullet) prev;
+                // System.out.println("el "+el.getClass());
+                // System.out.println("prev "+prev.getClass());
+                // System.out.println("b "+b.getClass());
+                // System.out.println("el "+el.getPos().getX()+","+el.getPos().getX());
                 if (el.getPos().getX() + b.getSpeed() > 8) {
                     //bullet diilangin dari layar (karena udh keluar jangkauan layar)
                     b.isDead();

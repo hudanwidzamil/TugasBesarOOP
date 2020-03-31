@@ -1,3 +1,4 @@
+
 /**
  * Plant abstract class
  * @author Muhamad Hudan Widzamil (18218003)
@@ -31,7 +32,8 @@ public abstract class Plant extends Entitas {
     public int getDamage(){return this.damage;}
     
     public Bullet shoot(){
-        return new Bullet(this.damage);
+        Point p = new Point(this.pos.getX()+1, this.pos.getY());
+        return new Bullet(this.damage, p);
     }
     
 }
