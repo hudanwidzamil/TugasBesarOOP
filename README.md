@@ -1,7 +1,7 @@
 # TugasBesarOOP
 Plant vs Zombies alike game implemented on Java.
 Cara menjalankan program:
-1. Compile semua file di folder src dengan perintah javac Main.java
+1. Compile semua file di folder src dengan perintah javac <namafile>.java pada seluruh file berekstensi .java
 2. Jalankan java Main di direktori yang sama dengan folder src
 
 Cara memainkan:
