@@ -11,6 +11,7 @@ public class Player {
     private int turn;
     private char[][] map;
     private boolean win = true;
+    public static int score = 0;
 
     Random rand = new Random();
 
@@ -116,7 +117,9 @@ public class Player {
     
     public void showMap(){
         System.out.println("Sun = " + this.getSunflower()+" Turn = "+this.getTurn());
+        System.out.println("Score = " + score);
         this.fillMap();
+        System.out.println("0\t1\t2\t3\t4\t5\t6\t7\t8\t");
         System.out.println("******************************************************************");
         for (int j = 0; j < 9; j++) {
             System.out.print(map[0][j] + "\t");
@@ -189,24 +192,20 @@ public class Player {
                     // System.out.println("other "+other.getClass());
                     // System.out.println("other "+other.getType()+" "+other.getIcon());
                     // System.out.println("other "+other.getPos().getX()+","+other.getPos().getY());
-                    if (other.getType().equals("plant")) {
-                        zombiedist = el.getPos().distance(other.getPos());
-                        if (zombiedist == z.getSpeed()) {
-                            canmovezombie = false;
+                    zombiedist = el.getPos().distance(other.getPos());
+                    if (zombiedist == z.getSpeed()) {
+                        canmovezombie = false;
+                        if (other.getType().equals("plant")) {
                             Plant pl = (Plant) other;
                             z.attack(pl);
                         }
                     }
-                    else if (other.getType().equals("bullet")) {
-                        canmovezombie = true;
-                    }
-                    else if (z.getPos().getX() - z.getSpeed() < 0) {
+                    if (z.getPos().getX() - z.getSpeed() < 0) {
                         canmovezombie = false;
                         win = false;
                         break;
                     }
                 }
-
                 if (canmovezombie == true) {
                     z.move();
                 }

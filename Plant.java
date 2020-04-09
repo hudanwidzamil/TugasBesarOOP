@@ -1,3 +1,4 @@
+import java.awt.Point;
 
 /**
  * Plant abstract class
@@ -32,7 +33,7 @@ public abstract class Plant extends Entitas {
     public int getDamage(){return this.damage;}
     
     public Bullet shoot(){
-        Point p = new Point(this.pos.getX()+1, this.pos.getY());
+        Point p = new Point(this.pos.getX()+1,this.pos.getX()+1);
         return new Bullet(this.damage, p);
     }
     

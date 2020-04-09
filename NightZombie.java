@@ -14,6 +14,7 @@ public class NightZombie extends Zombie {
 
     public void move(){
         this.pos.translate(-this.speed,0);
+        //TODO
     }
     public void attack(Plant p){
         p.life-=this.damage;
