@@ -15,10 +15,10 @@ public class GamePanel extends JPanel {
         boolean transparent;
         
         public PlantButton(int x, int y){
-            super("empty");
+            super();
             this.x = x;
             this.y = y;
-            this.type = "empty";
+            this.type = "none";
             transparent = false;
             transparencySwitch();
             addActionListener(new ActionListener(){
