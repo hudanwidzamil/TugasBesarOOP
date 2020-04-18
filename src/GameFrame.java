@@ -32,7 +32,7 @@ public class GameFrame extends JFrame {
         panel.setLayout(null);
         panel.setSize(800, 600);
         background.setBounds(0, 0, 800, 600);
-        ginfo.setBounds(0, 0, 100, 100);
+        ginfo.setBounds(0, 0, 800, 100);
         gpanel.setBounds(80, 100, 720, 320);
         pstor.setBounds(250,400,500,200);
 

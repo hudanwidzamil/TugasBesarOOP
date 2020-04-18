@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Iterator; 
 
 public class Player {
-    private int sunflower;
+    private Integer sunflower;
     private ArrayList<Entitas> container;
     private int turn;
     private char[][] map;

@@ -1,29 +1,41 @@
 import java.awt.*;
 import javax.swing.*;
-
+import java.util.Random;
 /**
  * GameInfo
  * @author Muhamad Hudan Widzamil 18218003
  */
 public class GameInfo extends JPanel implements Runnable{
     JLabel sunflower;
-    int sfpts;
+    Integer sfpts;
+    JLabel message;
+
+    Random addsf = new Random();
+
     public GameInfo(){
-        sfpts = 0;
-        sunflower = new JLabel(Integer.toString(sfpts));
+        sfpts = 100;
+        sunflower = new JLabel("     "+Integer.toString(sfpts));
         sunflower.setForeground(Color.WHITE);
+        message = new JLabel(" ");
+        message.setForeground(Color.WHITE);
         add(new JLabel(new ImageIcon("..\\images\\sun.png")));
         add(sunflower);
-        setPreferredSize(new Dimension(100,100));
+        add(message);
+        setPreferredSize(new Dimension(800,100));
         setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
         setOpaque(false);
     }
     public void run() {
+        int addedsf;
         while (true) {
             try{
-                Thread.sleep(3000);
-                sfpts+=10;  
-                sunflower.setText(Integer.toString(sfpts));
+                Thread.sleep(2500);
+                addedsf=addsf.nextInt((100 - 25) + 1) + 25;  
+                sfpts+=addedsf;
+                sunflower.setText("     "+Integer.toString(sfpts));
+                message.setText("                      Ditambahkan "+Integer.toString(addedsf)+" sunflower points");
+                Thread.sleep(500);
+                message.setText(" ");
             }catch(InterruptedException ex){
                 Thread.currentThread().interrupt();
             }

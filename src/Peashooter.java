@@ -11,7 +11,7 @@ public class Peashooter extends Plant {
         this.icon = 'P';
         this.die = false;
         this.life = 100;
-        this.price = 10;
+        this.price = 100;
         this.damage = 10;
     }
 
