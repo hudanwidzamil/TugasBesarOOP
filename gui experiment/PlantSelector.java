@@ -7,13 +7,16 @@ import javax.swing.*;
 public class PlantSelector extends JPanel{
     JButton peashooter;
     JButton fumeshroom;
+    JButton shovel;
     
     public PlantSelector(GamePanel gpanel){
         Icon psIcon = new ImageIcon("images\\cards\\card_peashooter.png");
         Icon fsIcon = new ImageIcon("images\\cards\\card_fumeshroom.png");
+        Icon shIcon = new ImageIcon("images\\cards\\card_shovel.jpg");
         peashooter = new JButton(psIcon);
         fumeshroom = new JButton(fsIcon);
-        
+        shovel = new JButton(shIcon);
+
         peashooter.setFocusPainted(false);
         peashooter.setBorderPainted(false);
         peashooter.setContentAreaFilled(false);
@@ -23,9 +26,16 @@ public class PlantSelector extends JPanel{
         fumeshroom.setBorderPainted(false);
         fumeshroom.setContentAreaFilled(false);
         fumeshroom.setOpaque(false);
+
+        shovel.setFocusPainted(false);
+        shovel.setBorderPainted(false);
+        shovel.setContentAreaFilled(false);
+        shovel.setOpaque(false);
         
         add(peashooter);
         add(fumeshroom);
+        add(shovel);
+
         peashooter.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                     gpanel.gridTransparency();
@@ -36,6 +46,13 @@ public class PlantSelector extends JPanel{
             public void actionPerformed(ActionEvent e){
                     gpanel.gridTransparency();
                     gpanel.onSelect = "F";
+            }
+        });
+
+        shovel.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                    gpanel.gridTransparency();
+                    gpanel.onSelect = "S";
             }
         });
         // setPreferredSize(new Dimension(180,180));

@@ -52,8 +52,11 @@ public class GamePanel extends JPanel {
             this.type = onSelect;
             if (type.equals("P")) {
                 super.setIcon(new ImageIcon("images\\plants\\peashooter_small.gif"));    
-            } else {
+            } else if(type.equals("F")) {
                 super.setIcon(new ImageIcon("images\\plants\\Fume-shroom_small.png"));
+            }else{
+                // type.equals("S")
+                super.setIcon(null);
             }
             
             gridTransparency();
