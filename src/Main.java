@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 /**
  * Main
+ * @author Muhamad Hudan Widzamil 18218003
  */
 public class Main {
     public final static void clearscreen(){

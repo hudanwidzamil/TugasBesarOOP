@@ -181,14 +181,8 @@ public class Player {
             if (el.getType().equals("zombie")) {
                 Entitas preq = el;
                 Zombie z = (Zombie) preq;
-                // System.out.println("el "+el.getClass());
-                // System.out.println("preq "+preq.getClass());
-                // System.out.println("z "+z.getClass());
                 boolean canmovezombie = true;
                 for (Entitas other: container) {
-                    // System.out.println("other "+other.getClass());
-                    // System.out.println("other "+other.getType()+" "+other.getIcon());
-                    // System.out.println("other "+other.getPos().getX()+","+other.getPos().getY());
                     if (other.getType().equals("plant")) {
                         zombiedist = el.getPos().distance(other.getPos());
                         if (zombiedist == z.getSpeed()) {
@@ -218,10 +212,6 @@ public class Player {
             if (el.getType().equals("bullet")) {
                 Entitas prev = el;
                 Bullet b = (Bullet) prev;
-                // System.out.println("el "+el.getClass());
-                // System.out.println("prev "+prev.getClass());
-                // System.out.println("b "+b.getClass());
-                // System.out.println("el "+el.getPos().getX()+","+el.getPos().getX());
                 if (el.getPos().getX() + b.getSpeed() > 8) {
                     //bullet diilangin dari layar (karena udh keluar jangkauan layar)
                     b.isDead();
