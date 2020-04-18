@@ -10,6 +10,7 @@ public class GameInfo extends JPanel{
     public GameInfo(){
         sfpts = 0;
         sunflower = new JLabel(Integer.toString(sfpts));
+        sunflower.setForeground(Color.WHITE);
         add(new JLabel(new ImageIcon("images\\sun.png")));
         add(sunflower);
         setPreferredSize(new Dimension(100,100));

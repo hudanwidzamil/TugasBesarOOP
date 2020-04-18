@@ -24,7 +24,7 @@ public class GameFrame extends JFrame {
         panel.add(gpanel);
         panel.add(pstor);
 
-        JLabel background = new JLabel(new ImageIcon("images\\mainBG.png"), JLabel.CENTER);
+        JLabel background = new JLabel(new ImageIcon("images\\BGfix.png"), JLabel.CENTER);
         panel.add(background);
 
         panel.setLayout(null);
