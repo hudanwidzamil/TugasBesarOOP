@@ -20,6 +20,8 @@ public class GameFrame extends JFrame {
         ginfo = new GameInfo();
         pstor = new PlantSelector(gpanel);
         
+        (new Thread(ginfo)).start();
+        
         panel.add(ginfo);
         panel.add(gpanel);
         panel.add(pstor);
@@ -39,11 +41,12 @@ public class GameFrame extends JFrame {
         setVisible(true);
         setResizable(false);        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
-     
+        
     }
  
     public static void main(String[] args)  {
         new GameFrame();
+        
     }
     
 }
