@@ -38,7 +38,7 @@ public class PlantSelector extends JPanel{
                     gpanel.onSelect = "F";
             }
         });
-        setPreferredSize(new Dimension(180,180));
+        // setPreferredSize(new Dimension(180,180));
         setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
         
     }

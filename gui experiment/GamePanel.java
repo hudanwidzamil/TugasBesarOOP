@@ -50,7 +50,12 @@ public class GamePanel extends JPanel {
 
         public void changeButton(){
             this.type = onSelect;
-            super.setText(type);
+            if (type.equals("P")) {
+                super.setIcon(new ImageIcon("images\\plants\\peashooter.gif"));    
+            } else {
+                super.setIcon(new ImageIcon("images\\plants\\freezepeashooter.gif"));
+            }
+            
             gridTransparency();
         }
     }
@@ -60,7 +65,8 @@ public class GamePanel extends JPanel {
         this.grid = new ArrayList<PlantButton>();
         setLayout(new GridLayout(4, 9));
         setPreferredSize(new Dimension(720,320));
-        setBackground(Color.GREEN);
+        
+
         PlantButton temp;
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 9; x++) {
