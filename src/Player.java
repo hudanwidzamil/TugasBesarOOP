@@ -11,11 +11,16 @@ public class Player {
     private int turn;
     private char[][] map;
     private boolean win = true;
+    
+    GamePanel gpanel;
+    GameInfo ginfo;
 
     Random rand = new Random();
 
-    public Player(){
-        this.sunflower = 0;
+    public Player(GamePanel gpanel,GameInfo ginfo){
+        this.gpanel = gpanel;
+        this.ginfo = ginfo;
+        this.sunflower = ginfo.sfpts;
         this.turn = 0;
         this.container = new ArrayList<Entitas>();
         this.map = new char[4][9];

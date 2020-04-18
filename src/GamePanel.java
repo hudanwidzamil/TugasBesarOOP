@@ -10,15 +10,13 @@ import javax.swing.*;
  */
 public class GamePanel extends JPanel {
     public class PlantButton extends JButton{
-        int x;
-        int y;
+        Point p;
         String type;
         boolean transparent;
         
         public PlantButton(int x, int y){
             super();
-            this.x = x;
-            this.y = y;
+            p = new Point(x, y);
             this.type = "none";
             transparent = false;
             transparencySwitch();
@@ -30,8 +28,7 @@ public class GamePanel extends JPanel {
         }
         public PlantButton(int x, int y, String type){
             super(type);
-            this.x = x;
-            this.y = y;
+            p = new Point(x, y);
             this.type = type;
             transparent = false;
             transparencySwitch();
