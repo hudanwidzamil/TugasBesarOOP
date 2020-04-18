@@ -51,9 +51,9 @@ public class GamePanel extends JPanel {
         public void changeButton(){
             this.type = onSelect;
             if (type.equals("P")) {
-                super.setIcon(new ImageIcon("images\\plants\\peashooter.gif"));    
+                super.setIcon(new ImageIcon("images\\plants\\peashooter_small.gif"));    
             } else {
-                super.setIcon(new ImageIcon("images\\plants\\freezepeashooter.gif"));
+                super.setIcon(new ImageIcon("images\\plants\\Fume-shroom_small.png"));
             }
             
             gridTransparency();
@@ -65,7 +65,7 @@ public class GamePanel extends JPanel {
         this.grid = new ArrayList<PlantButton>();
         setLayout(new GridLayout(4, 9));
         setPreferredSize(new Dimension(720,320));
-        
+        setOpaque(false);
 
         PlantButton temp;
         for (int y = 0; y < 4; y++) {

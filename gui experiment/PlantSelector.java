@@ -10,7 +10,7 @@ public class PlantSelector extends JPanel{
     
     public PlantSelector(GamePanel gpanel){
         Icon psIcon = new ImageIcon("images\\cards\\card_peashooter.png");
-        Icon fsIcon = new ImageIcon("images\\cards\\card_freezepeashooter.png");
+        Icon fsIcon = new ImageIcon("images\\cards\\card_fumeshroom.png");
         peashooter = new JButton(psIcon);
         fumeshroom = new JButton(fsIcon);
         
@@ -40,7 +40,7 @@ public class PlantSelector extends JPanel{
         });
         // setPreferredSize(new Dimension(180,180));
         setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
-        
+        setOpaque(false);
     }
     
     

@@ -26,11 +26,12 @@ public class GameFrame extends JFrame {
 
         
 
-        this.add(panel);
-        this.setSize(800, 600);   
-        this.setVisible(true);
-        this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+        add(panel);
+        setSize(800, 600);   
+        setVisible(true);
+        setResizable(false);
+        setBackground(Color.green);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
      
     }
  

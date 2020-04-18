@@ -10,9 +10,10 @@ public class GameInfo extends JPanel{
     public GameInfo(){
         sfpts = 0;
         sunflower = new JLabel(Integer.toString(sfpts));
-        this.add(new JLabel("Sunflower Points"));
-        this.add(sunflower);
+        add(new JLabel(new ImageIcon("images\\sun.png")));
+        add(sunflower);
         setPreferredSize(new Dimension(100,100));
+        setOpaque(false);
     }
     
 }
