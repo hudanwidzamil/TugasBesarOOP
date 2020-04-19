@@ -116,7 +116,7 @@ public class Player {
         }
 
         for (Entitas el : container) {
-            if (el.collideWith(p)) {
+            if (el.collideWith(p)&& !el.getType().equals("bullet")) {
                 canplace = false;
             }
         }
@@ -341,7 +341,7 @@ public class Player {
     }
 
     public void skipGUI() {
-        
+        fillGrid();
         //spawn zombie
         int spawnornot = rand.nextInt(10);
         if (spawnornot % 2 == 0) {
