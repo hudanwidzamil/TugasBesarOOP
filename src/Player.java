@@ -116,13 +116,12 @@ public class Player {
         }
 
         for (Entitas el : container) {
-            if (el.collideWith(p)&& !el.getType().equals("bullet")) {
+            if (el.collideWith(p) && !el.getType().equals("bullet")) {
                 canplace = false;
             }
         }
 
         if (canplace == false) {
-            // System.out.println("Sorry, can't place there");
             throw new InvalidPlacingException();
         }
         else {
@@ -131,7 +130,6 @@ public class Player {
                 ginfo.sfpts = ginfo.sfpts - p.price;
             }
             else {
-                // System.out.println("Sorry, can't buy plant");
                 throw new InvalidBuyingException();    
             }
         }
