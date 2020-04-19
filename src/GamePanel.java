@@ -53,15 +53,18 @@ public class GamePanel extends JPanel {
             } else if(type.equals("F")) {
                 setIcon(new ImageIcon("..\\images\\plants\\Fume-shroom_small.png"));
             }else{
-                // type.equals("S")
+                // type.equals("none")
                 setIcon(null);
             }
+            selectedPos = p;
             
             gridTransparency();
         }
     }
     List<PlantButton> grid;
     String onSelect;
+    Point selectedPos;
+
     public GamePanel(){
         this.grid = new ArrayList<PlantButton>();
         setLayout(new GridLayout(4, 9));

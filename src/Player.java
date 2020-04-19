@@ -3,8 +3,9 @@
  */
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.*;
 
-import GamePanel.PlantButton;
+// import GamePanel.*;
 
 import java.util.Iterator; 
 
@@ -102,6 +103,45 @@ public class Player {
             }
         }
     }
+    public void buyPlant(String onSelect, Point point){
+        boolean canplace = true;
+        Point pos = point;
+        Plant p;
+
+        if (onSelect.equals("P")) {
+            p = new Peashooter(pos);
+        }
+        else {
+            p = new Fumeshroom(pos);
+        }
+
+        for (Entitas el : container) {
+            if (el.collideWith(p)) {
+                canplace = false;
+            }
+        }
+
+        if (canplace == false) {
+            System.out.println("Sorry, can't place there");
+        }
+        else {
+            if (ginfo.sfpts >= p.price) {
+                container.add(p);
+                ginfo.sfpts = ginfo.sfpts - p.price;
+            }
+            else {
+                System.out.println("Sorry, can't buy plant");
+            }
+        }
+    }
+
+    public void buyPlantGUI(){
+        if (gpanel.selectedPos != null) {
+            buyPlant(gpanel.onSelect, gpanel.selectedPos);
+            gpanel.selectedPos = null;
+            gpanel.onSelect = "none";
+        }
+    }
 
     public void addSunflower(){
         int newSunflower = rand.nextInt((15 - 5) + 1) + 5;
@@ -123,24 +163,26 @@ public class Player {
     }
 
     public void fillGrid(){
-        for (PlantButton elmt : gpanel.grid) {
+        for (GamePanel.PlantButton elmt : gpanel.grid) {
             elmt.setIcon(null);
             elmt.type = "none";
         }
         for (Entitas el : container) {
-            for (PlantButton elmt : gpanel.grid) {
+            for (GamePanel.PlantButton elmt : gpanel.grid) {
                 if (el.getPos().distance(elmt.p)==0) {
                     elmt.type = Character.toString(el.getIcon());
-                    if (type.equals("P")) {
+                    if (elmt.type.equals("P")) {
                         elmt.setIcon(new ImageIcon("..\\images\\plants\\peashooter_small.gif"));    
-                    } else if(type.equals("F")) {
+                    } else if(elmt.type.equals("F")) {
                         elmt.setIcon(new ImageIcon("..\\images\\plants\\Fume-shroom_small.png"));
-                    }else if(type.equals("Z")) {
+                    }else if(elmt.type.equals("Z")) {
                         elmt.setIcon(new ImageIcon("..\\images\\zombies\\zombie1.png"));
-                    }else if(type.equals("N")) {
+                    }else if(elmt.type.equals("N")) {
                         elmt.setIcon(new ImageIcon("..\\images\\zombies\\zombie2.png"));
-                    }else if(type.equals("-")) {
+                    }else if(elmt.type.equals("-")) {
                         elmt.setIcon(new ImageIcon("..\\images\\pea.png"));
+                    }else{ // elmt.type.equals("none")
+                        elmt.setIcon(null);
                     }
                 }
             }
@@ -289,4 +331,109 @@ public class Player {
                 itr.remove(); 
         }
     }
+
+    public void skipGUI() {
+        
+        //spawn zombie
+        int spawnornot = rand.nextInt(10);
+        if (spawnornot % 2 == 0) {
+            this.spawnZombie();
+        }
+
+        //plant yg udah ada shoot bullet
+        ArrayList<Bullet> newbullet = new ArrayList<Bullet>();
+        for (Entitas el: container) {
+            if (el.getType().equals("plant")) {
+                Plant pl = (Plant) el;
+                Bullet bp = pl.shoot();
+                newbullet.add(bp);
+            }
+        }
+        container.addAll(newbullet);
+
+        fillGrid();
+        
+        //zombie yg udh ada suruh jalan (kalo masih bisa jalan)
+        //zombie yg ada didepan plant attack plantnya
+        int zombiedist;
+        for (Entitas el: container) {
+            if (el.getType().equals("zombie")) {
+                Entitas preq = el;
+                Zombie z = (Zombie) preq;
+                boolean canmovezombie = true;
+                for (Entitas other: container) {
+                    if (other.getType().equals("plant")) {
+                        zombiedist = el.getPos().distance(other.getPos());
+                        if (zombiedist == z.getSpeed()) {
+                            canmovezombie = false;
+                            Plant pl = (Plant) other;
+                            z.attack(pl);
+                        }
+                    }
+                    else if (other.getType().equals("bullet")) {
+                        canmovezombie = true;
+                    }
+                    else if (z.getPos().getX() - z.getSpeed() < 0) {
+                        canmovezombie = false;
+                        win = false;
+                        break;
+                    }
+                }
+
+                if (canmovezombie == true) {
+                    z.move();
+                }
+            }
+        }
+
+        //bullet yg udh dishoot move
+        for (Entitas el: container) {
+            if (el.getType().equals("bullet")) {
+                Entitas prev = el;
+                Bullet b = (Bullet) prev;
+                if (el.getPos().getX() + b.getSpeed() > 8) {
+                    //bullet diilangin dari layar (karena udh keluar jangkauan layar)
+                    b.isDead();
+                }
+                else {
+                    b.move();
+                    //bullet ngedamage zombie dan diilangin dari layar
+                    for (Entitas other: container) {
+                        if (other.getType().equals("zombie")) {
+                            Zombie zdmg = (Zombie) other;
+                            if (b.collideWith(zdmg)) {
+                                b.attack(zdmg);
+                                b.isDead();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //zombie & plant yg udh mati dimark mati
+        for (Entitas el: container) {
+            if (el.getType().equals("plant")) {
+                Plant pldead = (Plant) el;
+                if (pldead.getLife() < 0) {
+                    pldead.isDead();
+                }
+            }
+            else if (el.getType().equals("zombie")) {
+                Zombie zdead = (Zombie) el;
+                if (zdead.getHealth() < 0) {
+                    zdead.isDead();
+                }
+            }
+        }
+        //entitas yg udh mati dibuang dari layar
+        Iterator itr = container.iterator(); 
+        while (itr.hasNext()) 
+        { 
+            Entitas eldead = (Entitas) itr.next(); 
+            if (eldead.getDie()) 
+                itr.remove(); 
+        }
+    }
+    
 }

@@ -42,7 +42,7 @@ public class PlantSelector extends JPanel{
         shovel.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                     gpanel.gridTransparency();
-                    gpanel.onSelect = "S";
+                    gpanel.onSelect = "none";
             }
         });
         // setPreferredSize(new Dimension(180,180));

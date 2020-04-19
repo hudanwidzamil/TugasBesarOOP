@@ -45,7 +45,18 @@ public class GameFrame extends JFrame {
     }
  
     public static void main(String[] args)  {
-        new GameFrame();
+        GameFrame gframe = new GameFrame();
+        Player player = new Player(gframe.gpanel, gframe.ginfo);
+        while (player.getWin()) {
+            try{
+                player.buyPlantGUI();
+                Thread.sleep(2000);
+                player.skipGUI();
+            }catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+        }
+        System.exit(0);
         
     }
     
