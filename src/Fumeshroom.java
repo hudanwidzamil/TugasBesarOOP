@@ -11,7 +11,7 @@ public class Fumeshroom extends Plant{
         this.icon = 'F';
         this.die = false;
         this.life = 100;
-        this.price = 200;
+        this.price = 150;
         this.damage = 20;
     }
    

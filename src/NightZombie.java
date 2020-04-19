@@ -8,7 +8,7 @@ public class NightZombie extends Zombie {
         this.icon = 'N';
         this.die = false;
         this.health = 100;
-        this.speed = 2; //not fixed yet
+        this.speed = 1; //not fixed yet
         this.damage = 20; //not fixed yet
     }
 

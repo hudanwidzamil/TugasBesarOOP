@@ -103,7 +103,7 @@ public class Player {
             }
         }
     }
-    public void buyPlant(String onSelect, Point point){
+    public void buyPlant(String onSelect, Point point) throws InvalidPlacingException,InvalidBuyingException{
         boolean canplace = true;
         Point pos = point;
         Plant p;
@@ -122,7 +122,8 @@ public class Player {
         }
 
         if (canplace == false) {
-            System.out.println("Sorry, can't place there");
+            // System.out.println("Sorry, can't place there");
+            throw new InvalidPlacingException();
         }
         else {
             if (ginfo.sfpts >= p.price) {
@@ -130,14 +131,20 @@ public class Player {
                 ginfo.sfpts = ginfo.sfpts - p.price;
             }
             else {
-                System.out.println("Sorry, can't buy plant");
+                // System.out.println("Sorry, can't buy plant");
+                throw new InvalidBuyingException();    
             }
         }
     }
 
     public void buyPlantGUI(){
         if (gpanel.selectedPos != null) {
-            buyPlant(gpanel.onSelect, gpanel.selectedPos);
+            try {
+                buyPlant(gpanel.onSelect, gpanel.selectedPos);    
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            
             gpanel.selectedPos = null;
             gpanel.onSelect = "none";
         }
@@ -218,8 +225,9 @@ public class Player {
     /*method testing */
     public void printContainer() {
         for (Entitas el: container) {
-            System.out.println(el.getType());
+            System.out.println(el.getType()+el.getPos().getX()+el.getPos().getY());
         }
+        System.out.println(" ");
     }
 
     public void skip () {
@@ -410,7 +418,7 @@ public class Player {
                 }
             }
         }
-
+        fillMap();
         //zombie & plant yg udh mati dimark mati
         for (Entitas el: container) {
             if (el.getType().equals("plant")) {

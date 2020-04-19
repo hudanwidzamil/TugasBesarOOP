@@ -29,12 +29,12 @@ public class GameInfo extends JPanel implements Runnable{
         int addedsf;
         while (true) {
             try{
-                Thread.sleep(2500);
+                Thread.sleep(3000);
                 addedsf=addsf.nextInt((100 - 25) + 1) + 25;  
                 sfpts+=addedsf;
                 sunflower.setText("     "+Integer.toString(sfpts));
                 message.setText("                      Ditambahkan "+Integer.toString(addedsf)+" sunflower points");
-                Thread.sleep(500);
+                Thread.sleep(1000);
                 message.setText(" ");
             }catch(InterruptedException ex){
                 Thread.currentThread().interrupt();
