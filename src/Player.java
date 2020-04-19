@@ -3,6 +3,9 @@
  */
 import java.util.ArrayList;
 import java.util.Random;
+
+import GamePanel.PlantButton;
+
 import java.util.Iterator; 
 
 public class Player {
@@ -116,6 +119,31 @@ public class Player {
 
         for (Entitas el : container) {
             map[el.getPos().getY()][el.getPos().getX()] = el.getIcon();
+        }
+    }
+
+    public void fillGrid(){
+        for (PlantButton elmt : gpanel.grid) {
+            elmt.setIcon(null);
+            elmt.type = "none";
+        }
+        for (Entitas el : container) {
+            for (PlantButton elmt : gpanel.grid) {
+                if (el.getPos().distance(elmt.p)==0) {
+                    elmt.type = Character.toString(el.getIcon());
+                    if (type.equals("P")) {
+                        elmt.setIcon(new ImageIcon("..\\images\\plants\\peashooter_small.gif"));    
+                    } else if(type.equals("F")) {
+                        elmt.setIcon(new ImageIcon("..\\images\\plants\\Fume-shroom_small.png"));
+                    }else if(type.equals("Z")) {
+                        elmt.setIcon(new ImageIcon("..\\images\\zombies\\zombie1.png"));
+                    }else if(type.equals("N")) {
+                        elmt.setIcon(new ImageIcon("..\\images\\zombies\\zombie2.png"));
+                    }else if(type.equals("-")) {
+                        elmt.setIcon(new ImageIcon("..\\images\\pea.png"));
+                    }
+                }
+            }
         }
     }
     
